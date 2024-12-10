@@ -8,7 +8,7 @@ if ($conn->connect_error) {
 }
 
 // Requête SQL pour récupérer les messages dans l'ordre chronologique inverse
-$result = $conn->query("SELECT * FROM Conversation ORDER BY idMessage DESC");
+$result = $conn->query("SELECT * FROM Conversation ORDER BY idMessage ");
 
 // Vérification et initialisation de la sortie
 if ($result->num_rows > 0) {
@@ -18,10 +18,11 @@ if ($result->num_rows > 0) {
         $authorClass = $isSameUser ? "same-user" : "different-user";
 
         // Génération du HTML pour chaque message
-        echo "<div class='chat-message'>
-                <span class='author $authorClass'>{$row['User']}</span>: 
+        echo "<div class='chat-message $authorClass'>
+                <span class='author'>{$row['User']}</span>
                 <span class='text'>{$row['Message']}</span>
               </div>";
+    
     }
 } else {
     echo "<div class='chat-message'>Aucun message à afficher.</div>";

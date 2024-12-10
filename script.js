@@ -22,7 +22,6 @@ setInterval(loadMessages, 1000);
 // Gestion de l'envoi du formulaire
 messageForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-    console.log('test');
   const formData = new FormData(messageForm);
   try {
     await fetch("addMessage.php", {
